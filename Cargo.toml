@@ -1,0 +1,8 @@
+[package]
+name = "hmac-sha-256"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+hex = "0.4.3"
+sha256 = { git = "https://github.com/schemehcs/sha256.git" }
