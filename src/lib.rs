@@ -1,6 +1,6 @@
-static OPAD: [u8; 64] = [0x5c; 64];
-static IPAD: [u8; 64] = [0x36; 64];
 const BS: usize = 64;
+static OPAD: [u8; BS] = [0x5c; BS];
+static IPAD: [u8; BS] = [0x36; BS];
 
 pub fn hmac_sha256(key: &[u8], message: &[u8]) -> [u8; 32] {
     let computed_key = compute_key(key);
@@ -11,14 +11,14 @@ pub fn hmac_sha256(key: &[u8], message: &[u8]) -> [u8; 32] {
     let inner_hash = sha256::sha256(&inner_message);
     let outer_key = xor_arr(&computed_key, &OPAD);
     let mut outer_message: [u8; 96] = [0; 96];
-    outer_message[..64].copy_from_slice(&outer_key);
-    outer_message[64..].copy_from_slice(&inner_hash);
+    outer_message[..BS].copy_from_slice(&outer_key);
+    outer_message[BS..].copy_from_slice(&inner_hash);
     sha256::sha256(&outer_message)
 }
 
-fn xor_arr(a: &[u8; BS], b: &[u8; BS]) -> [u8; 64] {
+fn xor_arr(a: &[u8; BS], b: &[u8; BS]) -> [u8; BS] {
     let mut res: [u8; BS] = *a;
-    for i in 0..64 {
+    for i in 0..BS {
         res[i] ^= b[i];
     }
     res
