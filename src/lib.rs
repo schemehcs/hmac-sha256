@@ -2,7 +2,7 @@ use hasher_style::HasherStyle;
 use sha256::{BLOCK_LEN, HASH_LEN, Sha256};
 
 pub const HMAC_LEN: usize = HASH_LEN;
-type Mac = [u8; HMAC_LEN];
+pub type Mac = [u8; HMAC_LEN];
 
 const BL: usize = BLOCK_LEN;
 type Block = [u8; BL];
