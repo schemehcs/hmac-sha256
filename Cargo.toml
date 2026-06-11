@@ -1,5 +1,5 @@
 [package]
-name = "hmac-sha-256"
+name = "hmac-sha256"
 version = "0.1.0"
 edition = "2024"
 
