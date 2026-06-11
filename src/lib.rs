@@ -1,13 +1,13 @@
-use sha256::{HASH_LEN, Sha256};
+use sha256::{BLOCK_LEN, HASH_LEN, Sha256};
 
 pub const HMAC_LEN: usize = HASH_LEN;
 pub type Hmac = sha256::Hash;
 
-const BS: usize = HMAC_LEN * 2;
-type Block = [u8; BS];
+const BL: usize = BLOCK_LEN;
+type Block = [u8; BL];
 
-static OPAD: Block = [0x5c; BS];
-static IPAD: Block = [0x36; BS];
+static OPAD: Block = [0x5c; BL];
+static IPAD: Block = [0x36; BL];
 
 pub fn hmac_sha256(key: &[u8], message: &[u8]) -> Hmac {
     let computed_key = compute_key(key);
@@ -27,8 +27,8 @@ fn xor_arr(a: &Block, b: &Block) -> Block {
 }
 
 fn compute_key(key: &[u8]) -> Block {
-    let mut padded_key: Block = [0; BS];
-    if key.len() < BS {
+    let mut padded_key: Block = [0; BL];
+    if key.len() <= BL {
         padded_key[..key.len()].copy_from_slice(key);
     } else {
         padded_key[..HASH_LEN].copy_from_slice(&sha256::digest(key));
