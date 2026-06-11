@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 hex = "0.4.3"
 sha256 = { git = "https://github.com/schemehcs/sha256.git" }
+hasher-style = { git = "https://github.com/schemehcs/hasher-style.git" }
