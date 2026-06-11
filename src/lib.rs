@@ -1,4 +1,4 @@
-use hasher_style::HasherStyle;
+pub use hasher_style::HasherStyle;
 use sha256::{BLOCK_LEN, HASH_LEN, Sha256};
 
 pub const HMAC_LEN: usize = HASH_LEN;
