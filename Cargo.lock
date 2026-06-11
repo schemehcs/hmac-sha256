@@ -24,7 +24,7 @@ dependencies = [
 [[package]]
 name = "sha256"
 version = "0.1.0"
-source = "git+https://github.com/schemehcs/sha256.git#9e987921703ce8891a634af593a17c8ca7e087e5"
+source = "git+https://github.com/schemehcs/sha256.git#4ebe722f1b24cde598ddd5c9d1f8b32445c71505"
 dependencies = [
  "chunk-buf",
  "hex",
